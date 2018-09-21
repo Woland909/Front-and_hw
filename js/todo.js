@@ -34,7 +34,7 @@ const onSubmitForm = e => {
     e.preventDefault();
     if (title.value && description.value) {
         addNewItem(title.value, description.value);
-        form.reset(); //Сбрасываем тест в форме
+        form.reset(); //Сбрасываем текст в форме
     } else {
         showAlert('Вы не введи данные', 'danger');
     }
@@ -95,7 +95,7 @@ function addNewItem(title, description) {
         id: state.todos.length + 1,
         title,
         description
-    }
+    };
    
     state.todos.push(newTodo);
     generateItems(state.todos);
@@ -135,13 +135,12 @@ const deleteItem = id => {
     });
     //Заново генерируем эл
     generateItems(state.todos);
-
     //Выводим уведомление
     showAlert('Задача была удалена успешно', 'warning')
 };
 
 /*Перебераем в цикле массив с задачами и передаем по одной задаче в функцию addItem*/
-const generateItems = items =>{
+const generateItems = items => {
     table.innerHTML = '';
     items.forEach((todo,index) => addItem(todo,index));
 };
